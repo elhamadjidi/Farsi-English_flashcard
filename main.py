@@ -2,7 +2,7 @@ import csv
 from tkinter import *
 # from tkinter import messagebox
 import pandas
-import random
+import secrets
 
 BACKGROUND_COLOR = "#B1DDC6"
 # --------------------------------change---------------------------
@@ -22,7 +22,7 @@ random_word = {}  # the words are randomly selected to show to participant
 def next_card():
     global random_word, flip_timer
     window.after_cancel(flip_timer)  # invalidate the timer, so it stops using the one it never stopped counting down on
-    random_word = random.choice(dic_list)
+    random_word = secrets.SystemRandom().choice(dic_list)
     canvas.itemconfig(title, text="Farsi", fill="black")  # to hold on to the text in canvas
     canvas.itemconfig(word, text=random_word["Farsi"], fill="black")
     canvas.itemconfig(canvas_image, image=front_pic)
